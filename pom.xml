@@ -6,14 +6,18 @@
 
     <groupId>com.ryanmichela</groupId>
     <artifactId>SSHD</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
     <url>http://dev.bukkit.org/server-mods/sshd/</url>
 
     <!-- Repositories -->
     <repositories>
         <repository>
-            <id>bukkit-repo</id>
-            <url>http://repo.bukkit.org/content/groups/public/</url>
+            <id>paper-repo</id>
+            <url>https://repo.destroystokyo.com/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>tech-repo</id>
+            <url>https://repo.techcable.net/content/groups/public/</url>
         </repository>
     </repositories>
 
@@ -28,11 +32,17 @@
     <!-- Dependencies -->
     <dependencies>
         <dependency>
+            <groupId>com.destroystokyo.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.12-R0.1-SNAPSHOT</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
-            <version>1.7.9-R0.2</version>
+            <version>1.12-pre2-SNAPSHOT</version>
             <scope>provided</scope>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.apache.sshd</groupId>

@@ -98,7 +98,7 @@ public class ConsoleShellFactory implements Factory<Command> {
                         if (command.equals("exit")) {
                             break;
                         }
-                        SshdPlugin.instance.getLogger().info("<" + environment.getEnv().get(Environment.ENV_USER) + "> " + command);
+                        //SshdPlugin.instance.getLogger().info("<" + environment.getEnv().get(Environment.ENV_USER) + "> " + command);
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
                     }
                 }
