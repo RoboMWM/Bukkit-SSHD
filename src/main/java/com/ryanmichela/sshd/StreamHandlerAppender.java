@@ -1,5 +1,6 @@
 package com.ryanmichela.sshd;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.ErrorHandler;
 import org.apache.logging.log4j.core.Layout;
@@ -25,14 +26,17 @@ public class StreamHandlerAppender implements Appender {
     @Override
     public void append(LogEvent logEvent) {
         java.util.logging.Level level;
-        switch (logEvent.getLevel())
-        {
-            case DEBUG: level = java.util.logging.Level.FINE; break;
-            case INFO: level = java.util.logging.Level.INFO; break;
-            case WARN: level = java.util.logging.Level.WARNING; break;
-            case ERROR: level = java.util.logging.Level.SEVERE; break;
-            default: level = java.util.logging.Level.INFO; break;
-        }
+
+        Level level1 = logEvent.getLevel();
+
+        if (level1.equals(Level.DEBUG))
+            level = java.util.logging.Level.FINE;
+        else if (level1.equals(Level.WARN))
+            level = java.util.logging.Level.WARNING;
+        else if (level1.equals(Level.ERROR))
+            level = java.util.logging.Level.SEVERE;
+        else
+            level = java.util.logging.Level.INFO;
 
         String message = logEvent.getMessage().getFormattedMessage();
 
@@ -79,5 +83,19 @@ public class StreamHandlerAppender implements Appender {
     @Override
     public boolean isStarted() {
         return true;
+    }
+
+    public boolean isStopped() {
+        return false;
+    }
+
+    //lol
+    public void initialize()
+    {
+    }
+
+    public State getState()
+    {
+        return State.STARTED;
     }
 }
